@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>AutenticaApp</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="style/styleCss.css"/>
+</head>
+<body>
+	
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Lista de Usuários</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      	<li><a href="/"><i class="large material-icons">home</i></a></li>
+		        <li><a href="/cadastraUsuario" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Usuario</a></li>
+		      </ul>
+		    </div>
+		</nav>
+	
+	</header>
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Login</th>
+				<th>Nome</th>
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="usua : ${usuarios}">
+				<td><span th:text="${usua.login}"></span></td>
+				<td><span th:text="${usua.nome}"></span></td>
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('UC#deletarUsuario').arg(0, usua.login)).build()}"><i class="material-icons left">delete</i></a></td>
+			</tr>
+		</tbody>
+	
+	</table>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+
+</html>
